@@ -111,8 +111,18 @@ int main(int argc, const char *argv[])
         cv::Rect vehicleRect(535, 180, 180, 150);
         if (bFocusOnVehicle)
         {
-            // ...
-            
+            vector<cv::KeyPoint> croppedKeypoints;
+            for(std::vector<cv::KeyPoint>::iterator it = keypoints.begin(); it!= keypoints.end(); it++)
+            {
+                if(it->pt.x > vehicleRect.x - vehicleRect.width/2 && it->pt.x < vehicleRect.x + vehicleRect.width/2 
+                && it->pt.y > vehicleRect.y - vehicleRect.height/2 && it->pt.y < vehicleRect.y + vehicleRect.height/2)
+                {
+                    //std::cout << "\t\tKEYPOINT X:" << it->pt.x << ", Y:" << it->pt.y << std::endl;
+                    croppedKeypoints.push_back(*it);
+                }
+            }
+            keypoints = croppedKeypoints;
+            cout << keypoints.size() << " keypoints after cropping." << endl;
         }
 
         //// EOF STUDENT ASSIGNMENT
