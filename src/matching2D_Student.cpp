@@ -18,7 +18,21 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
     }
     else if (matcherType.compare("MAT_FLANN") == 0)
     {
-        // ...
+        // FLANN matcher should be used with SIFT detector and SIFT descriptor.
+        // ref: https://docs.opencv.org/4.1.1/d5/d6f/tutorial_feature_flann_matcher.html
+        // matcher = cv::DescriptorMatcher::create(cv::DescriptorMatcher::FLANNBASED);
+        // matcher = cv::FlannBasedMatcher::create();
+        matcher = cv::DescriptorMatcher::create(cv::DescriptorMatcher::FLANNBASED);
+
+
+        // Use FLANN Matcher with binary descriptors
+        // https://answers.opencv.org/question/547/using-flann-with-binary-descriptors-brieforb/
+
+        // cv::flann::LshIndexParams(int table_number, int key_size, int multi_probe_level);
+        // int table_number = 20;
+        // int key_size =10;
+        // int multi_probe_level = 2;
+        // cv::Ptr<cv::FlannBasedMatcher> matcher = new cv::flann::LshIndexParams(20,10,2);
     }
 
     // perform matching task
@@ -28,9 +42,23 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
         matcher->match(descSource, descRef, matches); // Finds the best match for each descriptor in desc1
     }
     else if (selectorType.compare("SEL_KNN") == 0)
-    { // k nearest neighbors (k=2)
+    { 
+        // k nearest neighbors (k=2)
+        int kNearestNeighbors = 2;
+        std::vector< std::vector<cv::DMatch> > knn_matches;
+        matcher->knnMatch(descSource, descRef, knn_matches, kNearestNeighbors);
 
-        // ...
+        // Select matches > threshold.
+        double minDescDistRatio = 0.8;
+        for (auto it = knn_matches.begin(); it != knn_matches.end(); ++it)
+        {
+            if ((*it)[0].distance < minDescDistRatio * (*it)[1].distance)
+            {
+                matches.push_back((*it)[0]);
+                // matches = (*it);
+            }
+        }
+        // std::cout << "# keypoints removed = " << knn_matches.size() - matches.size() << endl;        
     }
 }
 
@@ -48,11 +76,37 @@ void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descr
 
         extractor = cv::BRISK::create(threshold, octaves, patternScale);
     }
+    else if (descriptorType.compare("BRIEF") == 0)
+    {
+        
+        extractor = cv::xfeatures2d::BriefDescriptorExtractor::create();
+
+    }
+    else if (descriptorType.compare("ORB") == 0)
+    {
+        // keypoints detector should not be SIFT but ORB.
+        extractor = cv::ORB::create();
+    }
+    else if (descriptorType.compare("FREAK") == 0)
+    {
+        extractor = cv::xfeatures2d::FREAK::create();
+
+    }
+    else if (descriptorType.compare("AKAZE") == 0)
+    {
+        extractor = cv::AKAZE::create();
+
+    }
+    else if (descriptorType.compare("SIFT") == 0)
+    {
+        extractor = cv::xfeatures2d::SIFT::create();
+    }
     else
     {
-
-        //...
+        std::cout << "Err: " << descriptorType << " is not on the descriptor list" << std::endl;
+        return;
     }
+    
 
     // perform feature description
     double t = (double)cv::getTickCount();
