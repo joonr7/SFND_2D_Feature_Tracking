@@ -34,12 +34,6 @@ See the classroom instruction and code comments for more details on each of thes
 
 
 ## Result
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
- 
 
  |Detector|Descriptor|Matcher|#keypoint|time(detect)(ms)|#keypoint(vehicle)|time(descriptor)(ms)|#Matchedpoint(ms)|
 |---|---|---|---|---|---|---|---|
