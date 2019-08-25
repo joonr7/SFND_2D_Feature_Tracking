@@ -118,12 +118,6 @@ int main(int argc, const char *argv[])
                 {
                     croppedKeypoints.push_back(*it);
                 }
-                // if(it->pt.x > vehicleRect.x && it->pt.x < vehicleRect.x + vehicleRect.width 
-                // && it->pt.y > vehicleRect.y && it->pt.y < vehicleRect.y + vehicleRect.height)
-                // {
-                //     // std::cout << "\t\tKEYPOINT X:" << it->pt.x << ", Y:" << it->pt.y << std::endl;
-                //     croppedKeypoints.push_back(*it);
-                // }
             }
             keypoints = croppedKeypoints;
             cout << keypoints.size() << " keypoints after cropping." << endl;
