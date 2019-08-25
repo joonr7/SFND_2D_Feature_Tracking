@@ -114,12 +114,16 @@ int main(int argc, const char *argv[])
             vector<cv::KeyPoint> croppedKeypoints;
             for(std::vector<cv::KeyPoint>::iterator it = keypoints.begin(); it!= keypoints.end(); it++)
             {
-                if(it->pt.x > vehicleRect.x - vehicleRect.width/2 && it->pt.x < vehicleRect.x + vehicleRect.width/2 
-                && it->pt.y > vehicleRect.y - vehicleRect.height/2 && it->pt.y < vehicleRect.y + vehicleRect.height/2)
+                if(vehicleRect.contains(it->pt))
                 {
-                    //std::cout << "\t\tKEYPOINT X:" << it->pt.x << ", Y:" << it->pt.y << std::endl;
                     croppedKeypoints.push_back(*it);
                 }
+                // if(it->pt.x > vehicleRect.x && it->pt.x < vehicleRect.x + vehicleRect.width 
+                // && it->pt.y > vehicleRect.y && it->pt.y < vehicleRect.y + vehicleRect.height)
+                // {
+                //     // std::cout << "\t\tKEYPOINT X:" << it->pt.x << ", Y:" << it->pt.y << std::endl;
+                //     croppedKeypoints.push_back(*it);
+                // }
             }
             keypoints = croppedKeypoints;
             cout << keypoints.size() << " keypoints after cropping." << endl;
