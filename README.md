@@ -31,3 +31,52 @@ See the classroom instruction and code comments for more details on each of thes
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./2D_feature_tracking`.
+
+
+## Result
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+ 
+
+ |Detector|Descriptor|Matcher|#keypoint|time(detect)(ms)|#keypoint(vehicle)|time(descriptor)(ms)|#Matchedpoint(ms)|
+|---|---|---|---|---|---|---|---|
+|	SHITOMASI	|	BRISK	|	MAT_BF	|	1342.30	|	8.41	|	117.90	|	1.00	|	85.22	|
+|	HARRIS	|	BRISK	|	MAT_BF	|	173.70	|	2.91	|	24.80	|	0.36	|	15.78	|
+|	FAST	|	BRISK	|	MAT_BF	|	1787.40	|	0.47	|	149.10	|	1.16	|	99.89	|
+|	BRISK	|	BRISK	|	MAT_BF	|	2711.40	|	23.77	|	276.30	|	1.90	|	174.44	|
+|	ORB	|	BRISK	|	MAT_BF	|	500.00	|	3.93	|	116.10	|	0.90	|	83.44	|
+|	AKAZE	|	BRISK	|	MAT_BF	|	1342.90	|	31.33	|	167.00	|	1.18	|	135.00	|
+|	SIFT	|	BRISK	|	MAT_BF	|	1386.00	|	46.62	|	138.70	|	1.01	|	66.00	|
+|	SHITOMASI	|	BRIEF	|	MAT_BF	|	1342.30	|	22.19	|	117.90	|	0.88	|	104.89	|
+|	HARRIS	|	BRIEF	|	MAT_BF	|	173.70	|	4.49	|	24.80	|	0.23	|	19.22	|
+|	FAST	|	BRIEF	|	MAT_BF	|	1787.40	|	0.50	|	149.10	|	0.51	|	122.11	|
+|	BRISK	|	BRIEF	|	MAT_BF	|	2711.40	|	23.80	|	276.30	|	0.61	|	189.33	|
+|	ORB	|	BRIEF	|	MAT_BF	|	500.00	|	4.03	|	116.10	|	0.37	|	60.56	|
+|	AKAZE	|	BRIEF	|	MAT_BF	|	1342.90	|	31.29	|	167.00	|	0.48	|	140.67	|
+|	SIFT	|	BRIEF	|	MAT_BF	|	1386.00	|	45.28	|	138.70	|	0.41	|	78.22	|
+|	SHITOMASI	|	ORB	|	MAT_BF	|	1342.30	|	7.45	|	117.90	|	0.61	|	100.89	|
+|	HARRIS	|	ORB	|	MAT_BF	|	173.70	|	2.93	|	24.80	|	0.54	|	18.00	|
+|	FAST	|	ORB	|	MAT_BF	|	1787.40	|	0.47	|	149.10	|	0.65	|	119.00	|
+|	BRISK	|	ORB	|	MAT_BF	|	2711.40	|	23.76	|	276.30	|	2.39	|	168.44	|
+|	ORB	|	ORB	|	MAT_BF	|	500.00	|	3.95	|	116.10	|	2.50	|	84.78	|
+|	AKAZE	|	ORB	|	MAT_BF	|	1342.90	|	31.35	|	167.00	|	1.54	|	131.33	|
+|	SHITOMASI	|	FREAK	|	MAT_BF	|	1342.30	|	7.07	|	117.90	|	20.90	|	85.33	|
+|	HARRIS	|	FREAK	|	MAT_BF	|	173.70	|	2.89	|	24.80	|	20.60	|	16.00	|
+|	FAST	|	FREAK	|	MAT_BF	|	1787.40	|	0.47	|	149.10	|	21.38	|	97.56	|
+|	BRISK	|	FREAK	|	MAT_BF	|	2711.40	|	23.68	|	276.30	|	21.57	|	169.33	|
+|	ORB	|	FREAK	|	MAT_BF	|	500.00	|	4.38	|	116.10	|	21.68	|	46.67	|
+|	AKAZE	|	FREAK	|	MAT_BF	|	1342.90	|	27.64	|	167.00	|	22.15	|	131.89	|
+|	SIFT	|	FREAK	|	MAT_BF	|	1386.00	|	47.54	|	138.70	|	21.22	|	66.11	|
+|	AKAZE	|	AKAZE	|	MAT_BF	|	1342.90	|	31.03	|	167.00	|	24.44	|	139.89	|
+|	SHITOMASI	|	SIFT	|	MAT_FLANN	|	1342.30	|	8.33	|	117.90	|	7.59	|	103.22	|
+|	HARRIS	|	SIFT	|	MAT_FLANN	|	173.70	|	2.94	|	24.80	|	8.15	|	18.11	|
+|	FAST	|	SIFT	|	MAT_FLANN	|	1787.40	|	0.49	|	149.10	|	10.44	|	116.56	|
+|	BRISK	|	SIFT	|	MAT_FLANN	|	2711.40	|	23.72	|	276.30	|	14.61	|	184.67	|
+|	ORB	|	SIFT	|	MAT_FLANN	|	500.00	|	4.03	|	116.10	|	19.54	|	84.89	|
+|	AKAZE	|	SIFT	|	MAT_FLANN	|	1342.90	|	32.17	|	167.00	|	10.13	|	141.78	|
+|	SIFT	|	SIFT	|	MAT_FLANN	|	1386.00	|	46.46	|	138.70	|	38.43	|	89.22	|
+
+
