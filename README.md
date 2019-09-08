@@ -74,3 +74,13 @@ See the classroom instruction and code comments for more details on each of thes
 |	SIFT	|	SIFT	|	MAT_FLANN	|	1386.00	|	46.46	|	138.70	|	38.43	|	89.22	|
 
 
+## Performance evaluation
+Number of keypoints rank:<br>
+(detector)  BRISK(2711) > FAST(1787) > SIFT(1386) > AKAZE(1343) > SHITOMASI(1342) > ORB(500) > HARRIS(174) <br><br>
+Percentage of matched kpts / kpts rank:<br>
+<img src="images/percent_rank.png" width="977" height="910" /><br><br>
+
+### the TOP3 detector / descriptor combinations: <br>
+1. FAST/BRIEF: very fast, lots of keypoints, high matched percentage <br>
+2. SHITOMASI/ORB: fast, many keypoints, high matched percentage<br>
+3. SHITOMASI/SIFT: fast, many keypoints, high matched percentage<br>
